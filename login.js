@@ -31,7 +31,7 @@ button2.addEventListener('click', (e) => {
 			alert('Wrong username or password\nEnter Valid Username and Password');
 			username.value = ' ';
 			password.value = ' ';
-			button2.innerText = "Submit!"
+			button2.innerText = 'Submit!';
 			console.log(error);
 		});
 });

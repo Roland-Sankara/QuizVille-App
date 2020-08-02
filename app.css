@@ -145,6 +145,7 @@ input ::placeholder{
 
 #question{
 	text-align: left;
+	margin-top: 20rem;
 	padding: 1rem;
 }
 #create{

@@ -10,12 +10,13 @@ let dbScore = `${recentScore / 10 / 10}`;
 finalScore1.innerText = `>> ${Math.floor(scorePercent)}% <<`;
 finalScore2.innerText = ranking;
 const max_highScores = 5;
+let totalPoints = 0;
 
 // the request body
 const content = {
-	quizTopic    : localStorage.getItem('topic'),
-	quizCategory : localStorage.getItem('category'),
-	score        : dbScore
+	topic    : localStorage.getItem('topic'),
+	category : localStorage.getItem('category'),
+	score    : dbScore
 };
 const requestOptions = {
 	method  : 'POST',
@@ -23,25 +24,26 @@ const requestOptions = {
 	body    : JSON.stringify(content)
 };
 
-if (localStorage.getItem('topic') === true) {
-	//save to database
-	fetch('https://quizville-app.herokuapp.com/api/results', requestOptions)
-		.then((res) => {
-			if (!res.ok) {
-				throw new Error('Something Went Wrong >> Failed to save Result');
-			} else {
-				return res.json();
-			}
-		})
-		.then((res) => {
-			alert(res.message);
-			console.log(res.message);
-		})
-		.catch((err) => {
-			alert(err.error);
-			console.log(err);
-		});
+//save to database
+fetch('https://quizville-app.herokuapp.com/api/results/', requestOptions)
+	.then((res) => {
+		console.log('One');
+		if (!res.ok) {
+			throw new Error('Something Went Wrong >> Failed to save Result');
+		} else {
+			return res.json();
+		}
+	})
+	.then((res) => {
+		alert(res.message);
+		console.log(res.message);
+	})
+	.catch((err) => {
+		alert(err.error);
+		console.log(err);
+	});
 
+setTimeout(() => {
 	//get total points
 	fetch('https://quizville-app.herokuapp.com/api/results/score', {
 		method  : 'GET',
@@ -56,15 +58,38 @@ if (localStorage.getItem('topic') === true) {
 		})
 		.then((res) => {
 			totalScore.innerText = `${res.result} total points`;
+			totalPoints = res.result;
 			console.log(res.result);
 		})
 		.catch((err) => {
 			alert(err);
 			console.log(err);
 		});
-} else {
-	console.log('Quiz not based on Topic');
-}
+}, 2000);
+
+//saving User record
+fetch('https://quizville-app.herokuapp.com/api/records/user', {
+	method  : 'POST',
+	headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
+	body    : JSON.stringify({
+		score  : totalPoints,
+		topics : [ localStorage.getItem('topic') ]
+	})
+})
+	.then((res) => {
+		console.log('Three');
+		if (!res.ok) {
+			throw new Error('Something Went Wrong >> Failed to save records!');
+		} else {
+			return res.json();
+		}
+	})
+	.then((res) => {
+		console.log(res.message);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 // clear localStorage api-url, topic and category
 localStorage.removeItem('categoryUrl');
