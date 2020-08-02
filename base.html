@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Buenard&display=swap" rel="stylesheet">
+    <title>Quiz Quiz</title>
+</head>
+<body>
+   <div class="container">
+       <div id="home" class="flex-center flex-column">
+           <h1>QuizVille</h1>
+            <select class="btn text-center" name="categories" id="categories">
+                <option value="choose">Categories</option>
+                <option value="general">General-Knowledge</option>
+                <option value="computer">Computers</option>
+                <option value="vehicles">Vehicles</option>
+                <option value="sports">Sports</option>
+                <option value="geography">Geography</option>
+                <option value="history">History</option>
+                <option value="animations">Animations</option>
+                <option value="any">All-Categories</option>
+            </select>
+            <a class="btn submit-btn" href="./game.html" id="play">Play</a>
+            <p style="font-size: 16px; font-weight: 800;">- - - - - OR - - - - -</p>
+           <br/>
+           <br/>
+           <input id="topic_input" class="btn" type="text" placeholder="Enter Quiz Topic Here"> 
+           <br>
+           <a class="btn submit-btn" href="./game.html" id="play2">Play</a>
+           <br>
+           <a class="btn" href="./highscores.html">High Scores</a>
+           <br>
+           <a class="btn" href="./create.html">Create Quiz</a>
+
+       </div>
+   </div>
+   <script src="category.js"></script>
+</body>
+</html>

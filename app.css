@@ -85,7 +85,7 @@ h3 {
 .btn{
     font-size: 1.8rem;
     padding:1rem 0;
-    width:20rem;
+    width:25rem;
     text-align: center;
     border:0.1rem solid #56a5eb;
     margin-bottom: 1rem;
@@ -93,7 +93,25 @@ h3 {
     color:#56a5eb;
     background-color: white;
 }
+.submit-btn{
+    font-size: 1.8rem;
+    padding:1rem 0;
+    width:15rem;
+    text-align: center;
+	border:0.1rem solid orangered;
+	border-radius: 6px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color:#56a5eb;
+    background-color: white;
+}
 .btn:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86,185,235,0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+.submit-btn:hover{
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 rgba(86,185,235,0.5);
     transform: translateY(-0.1rem);
@@ -115,7 +133,7 @@ form{
 
 input{
 	margin-bottom: 1rem;
-	width:20rem;
+	width:25rem;
 	padding:1.5rem;
 	font-size: 1.8rem;
 	border: none;
@@ -123,4 +141,28 @@ input{
 }
 input ::placeholder{
 	color:#aaa;
+}
+
+#question{
+	text-align: left;
+	padding: 1rem;
+}
+#create{
+	margin-top: 20rem;
+	margin-bottom: 5rem;
+}
+.qn-btn{
+	width:30rem;
+}
+#saveScoreBtn{
+	font-size: 1.8rem;
+    padding:1rem 0;
+    width:25rem;
+    text-align: center;
+	border:0.1rem solid orangered;
+	border-radius: 6px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color:#56a5eb;
+    background-color: white;
 }

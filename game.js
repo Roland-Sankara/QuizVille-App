@@ -5,8 +5,7 @@ const loader = document.getElementById('loader');
 const game = document.getElementById('game');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progress-bar-full');
-let categoryUrl = localStorage.getItem('categoryUrl')
-
+let categoryUrl = localStorage.getItem('categoryUrl');
 
 let currQuestion = {};
 let acceptingAnswers = false;
@@ -24,7 +23,8 @@ fetch(categoryUrl)
 	})
 	.then((loadedQuestions) => {
 		// questions = loadedQuestions;
-
+		localStorage.setItem('topic', loadedQuestions.results[0].topic);
+		localStorage.setItem('category', loadedQuestions.results[0].category);
 		//console.log(loadedQuestions.results);
 		questions = loadedQuestions.results.map((loadedQuestion) => {
 			const formatedQuestion = {
@@ -48,12 +48,13 @@ fetch(categoryUrl)
 
 // CONSTANTS
 const correct_bonus = 10;
-const max_questions = 10;
+let max_questions = 0;
 
 const startGame = () => {
 	questionCounter = 0;
 	score = 0;
 	availableQuestions = [ ...questions ];
+	max_questions = availableQuestions.length;
 	getNewQuestion();
 	game.classList.remove('hidden');
 	loader.classList.add('hidden');
@@ -62,6 +63,7 @@ const startGame = () => {
 getNewQuestion = () => {
 	if (availableQuestions.length === 0 || questionCounter > max_questions) {
 		localStorage.setItem('recentScore', score);
+		localStorage.setItem('scorePercent', `${score / (max_questions * 10) * 100}`);
 		//go to the end page
 		return window.location.assign('/end.html');
 	}

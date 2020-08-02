@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Buenard&display=swap" rel="stylesheet">
     <title>Congrats!</title>
 </head>
 <body>
     <div class="container">
         <div id="end" class="flex-center flex-column">
-            <h1 id="finalScore">0</h1>
+            <h1 id="finalScore1">0</h1>
+            <h1 id="finalScore2" style="color:lightsalmon">0</h1>
+            <h2 id="totalPoints"></h2>
             <form action="">
                 <input id="username" type="text" name="username" placeholder="Username">
+                <br>
                 <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
             </form>
+            <br>
             <!-- <a class="btn" href="game.html">Play Again</a> -->
-            <a class="btn" href="/">Go Home</a>
+            <a class="btn" href="/base.html">Go Home</a>
         </div>
     </div>
     <script src='end.js'></script>

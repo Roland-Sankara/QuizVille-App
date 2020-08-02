@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Buenard&display=swap" rel="stylesheet">
+    <title>Create Quiz</title>
+</head>
+<body>
+    <div class="container">
+        <div id="create" class="flex-center flex-column">
+            <h1>Create Quiz</h1>
+            <textarea name="" id="question" class="btn qn-btn" cols="20" rows="5" placeholder="Type question here. . ." required></textarea>
+            <br>
+            <input style="color:teal" class="btn qn-btn" type="text" id="answer" placeholder="Correct Answer Here" required/>
+            <br>
+            <input style="color:lightsalmon" class="btn qn-btn" type="text" id="wrong1" placeholder="Type wrong option one" required/>
+            <br>
+            <input style="color:lightsalmon" class="btn qn-btn" type="text" id="wrong2" placeholder="Type wrong option two" required/>
+            <br>
+            <input style="color:lightsalmon" class="btn qn-btn" type="text" id="wrong3" placeholder="Type wrong option three" required/>
+            <br>
+            <input class="btn qn-btn" type="text" id="topic" placeholder="Quiz Topic" required/>
+            <br>
+            <select class="btn text-center qn-btn" id="category" required>
+                <option value="choose">Choose Quiz Subject</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Computer">Computer</option>
+                <option value="Geography">Geography</option>
+                <option value="Physics">Physics</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="History">History</option>
+            </select>
+            <br>
+            <button id="submit-btn" class="submit-btn" >Submit!</button>
+            <br/>
+            <a class="btn" href="./create.html">Another Question</a>
+            <br/>
+            <br/> 
+            <a class="btn" href="./base.html" id="">Go Home!</a>
+        </div>
+    </div>
+    <script src="./create.js"></script>
+</body>
+</html>
