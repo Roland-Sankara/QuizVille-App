@@ -4,7 +4,7 @@ const contact = document.querySelector('#contact');
 const button1 = document.querySelector('#submit-btn1');
 
 button1.addEventListener('click', (e) => {
-	button1.innerText = "Loading . . ."
+	button1.innerText = 'Loading . . .';
 	e.preventDefault();
 	// the request body
 	const content = {
@@ -34,7 +34,7 @@ button1.addEventListener('click', (e) => {
 			username.value = ' ';
 			password.value = ' ';
 			contact.value = ' ';
-			button1.innerText = "Submit!"
+			button1.innerText = 'Submit!';
 			console.log(error);
 		});
 });
