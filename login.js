@@ -3,12 +3,14 @@ const password = document.querySelector('#password');
 const button2 = document.querySelector('#submit-btn2');
 
 button2.addEventListener('click', (e) => {
-	button2.innerText = "Loading . . ."
+	button2.innerText = 'Loading . . .';
+	let name = username.value;
+	let pass = password.value;
 	e.preventDefault();
 	// the request body
 	const content = {
-		username : username.value,
-		password : password.value
+		username : name,
+		password : pass
 	};
 	const requestOptions = {
 		method  : 'POST',
