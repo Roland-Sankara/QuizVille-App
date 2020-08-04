@@ -17,7 +17,6 @@ fetch('https://quizville-app.herokuapp.com/api/records/', {
 		highScoresList.innerHTML = rankArray
 			.map((result) => `<li class="high-score">${result.username} => ${result.score}</li>`)
 			.join('');
-		alert('good');
 	})
 	.catch((err) => {
 		alert(err);
