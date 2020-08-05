@@ -19,6 +19,6 @@ fetch('https://quizville-app.herokuapp.com/api/records/', {
 			.join('');
 	})
 	.catch((err) => {
-		alert(err);
+		//alert(err);
 		console.log(err);
 	});

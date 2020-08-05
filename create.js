@@ -27,7 +27,7 @@ submit.addEventListener('click', (e) => {
 		headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
 		body    : JSON.stringify(content)
 	};
-	fetch('https://quizville-app.herokuapp.com/api/questions/', requestOptions)
+	fetch('http://localhost:4000/api/questions/', requestOptions)
 		.then((res) => {
 			if (!res.ok) {
 				throw new Error('Something Went Wrong!');

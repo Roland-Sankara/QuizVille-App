@@ -47,7 +47,7 @@ fetch(categoryUrl)
 	});
 
 // CONSTANTS
-const correct_bonus = 10;
+const correct_bonus = 5;
 let max_questions = 0;
 
 const startGame = () => {

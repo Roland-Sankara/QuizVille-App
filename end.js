@@ -37,66 +37,46 @@ fetch('https://quizville-app.herokuapp.com/api/results/', requestOptions)
 	.then((res) => {
 		alert(res.message);
 		console.log(res.message);
+		return fetch('https://quizville-app.herokuapp.com/api/results/score', {
+			method  : 'GET',
+			headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }
+		});
+	})
+	.then((res) => {
+		if (!res.ok) {
+			throw new Error('Something Went Wrong >> Failed to get results!');
+		} else {
+			return res.json();
+		}
+	})
+	.then((res) => {
+		totalScore.innerText = `|===> ${res.result} total points`;
+		totalPoints = res.result;
+		console.log(res.result);
+		return fetch('https://quizville-app.herokuapp.com/api/records/user', {
+			method  : 'POST',
+			headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
+			body    : JSON.stringify({
+				score  : totalPoints,
+				topics : [ localStorage.getItem('topic') ]
+			})
+		});
+	})
+	.then((res) => {
+		console.log('Three');
+		if (!res.ok) {
+			throw new Error('Something Went Wrong >> Failed to save records!');
+		} else {
+			return res.json();
+		}
+	})
+	.then((res) => {
+		console.log(res.message);
 	})
 	.catch((err) => {
-		alert(err.error);
+		//alert(err.error);
 		console.log(err);
 	});
-
-setTimeout(() => {
-	//get total points
-	fetch('https://quizville-app.herokuapp.com/api/results/score', {
-		method  : 'GET',
-		headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }
-	})
-		.then((res) => {
-			if (!res.ok) {
-				throw new Error('Something Went Wrong >> Failed to get results!');
-			} else {
-				return res.json();
-			}
-		})
-		.then((res) => {
-			totalScore.innerText = `${res.result} total points`;
-			totalPoints = res.result;
-			console.log(res.result);
-		})
-		.catch((err) => {
-			alert(err);
-			console.log(err);
-		});
-}, 2000);
-
-//saving User record
-setTimeout(() => {
-	fetch('https://quizville-app.herokuapp.com/api/records/user', {
-		method  : 'POST',
-		headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
-		body    : JSON.stringify({
-			score  : totalPoints,
-			topics : [ localStorage.getItem('topic') ]
-		})
-	})
-		.then((res) => {
-			console.log('Three');
-			if (!res.ok) {
-				throw new Error('Something Went Wrong >> Failed to save records!');
-			} else {
-				return res.json();
-			}
-		})
-		.then((res) => {
-			console.log(res.message);
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-}, 3000);
-
-// clear localStorage api-url, topic and category
-localStorage.removeItem('categoryUrl');
-localStorage.removeItem('topic');
-localStorage.removeItem('category');
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 username.addEventListener('keyup', () => {

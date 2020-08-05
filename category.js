@@ -79,5 +79,5 @@ topic_input.addEventListener('keyup', (e) => {
 playBtn2.addEventListener('click', () => {
 	let topic = topic_input.value.toLowerCase();
 	console.log(document.querySelector('#topic_input'));
-	localStorage.setItem('categoryUrl', `http://localhost:4000/api/questions/topic/${topic}`);
+	localStorage.setItem('categoryUrl', `https://quizville-app.herokuapp.com/api/questions/topic/${topic}`);
 });
