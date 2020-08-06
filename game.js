@@ -47,7 +47,7 @@ fetch(categoryUrl)
 	});
 
 // CONSTANTS
-const correct_bonus = 5;
+const correct_bonus = 1;
 let max_questions = 0;
 
 const startGame = () => {
@@ -63,7 +63,8 @@ const startGame = () => {
 getNewQuestion = () => {
 	if (availableQuestions.length === 0 || questionCounter > max_questions) {
 		localStorage.setItem('recentScore', score);
-		localStorage.setItem('scorePercent', `${score / (max_questions * 10) * 100}`);
+		localStorage.setItem('scorePercent', `${score / max_questions * 100}`);
+		localStorage.setItem('pointsMetric', max_questions / 2);
 		//go to the end page
 		return window.location.assign('/end.html');
 	}
